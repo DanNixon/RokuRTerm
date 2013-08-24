@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
 
-## RokuRTerm v0.1
+## RokuRTerm v0.2
 ## dan-nixon.com
 ## 24/08/2013
 ## Allows control of a Roku player over the external control API
 
-import httplib
+import httplib, sys
 
 ##Set this to your Roku player IP
 roku_ip = "192.168.1.120"
@@ -71,8 +71,8 @@ def send_key_cmd(cmd_string):
 	conn.request("POST", "/keypress/" + cmd_string)
 
 def print_help():
-	print "RokuRTerm v0.1"
-	print "Commands:"
+	print "RokuRTerm"
+	print "Keys:"
         print "? - Help"
         print "/ - Exit Remote App"
 	print "w - Up"
@@ -142,6 +142,7 @@ def parse_cl(cl_input):
 			print_help()
 			break
 def main():
+	sys.stdout.write("\x1b]2;RokuRTerm\x07")
 	print "Press / to exit, ? for help"
 	print "Roku IP: " + roku_ip
 	while(run):
