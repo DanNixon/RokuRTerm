@@ -1,3 +1,8 @@
+## RokuRTerm v0.1
+## dan-nixon.com
+## 24/08/2013
+## Allows control of a Roku player over the external control API
+
 import httplib, shlex
 
 ##Set this to your Roku player IP
