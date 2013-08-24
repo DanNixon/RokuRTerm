@@ -1,9 +1,12 @@
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+
 ## RokuRTerm v0.1
 ## dan-nixon.com
 ## 24/08/2013
 ## Allows control of a Roku player over the external control API
 
-import httplib, shlex
+import httplib
 
 ##Set this to your Roku player IP
 roku_ip = "192.168.1.120"
