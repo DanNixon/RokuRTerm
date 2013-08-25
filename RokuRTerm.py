@@ -69,6 +69,7 @@ class switch(object):
 def send_key_cmd(cmd_string):
 	conn = httplib.HTTPConnection(roku_ip + ":8060")
 	conn.request("POST", "/keypress/" + cmd_string)
+	conn.close()
 
 def print_help():
 	print "RokuRTerm"
