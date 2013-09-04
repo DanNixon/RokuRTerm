@@ -15,7 +15,7 @@ You may wish to change some of the key mappings if you find my layout isn't work
 Usage
 -----
 
-Start the application using ```python RokuRTerm.py```, you may wish to enclose this is a shell script in your home directory allowing you to type something like ```./roku``` into a new terminal to launch the app.
+Start the application using ```python RokuRTerm.py```, you may wish to enclose this is a shell script in your home directory or by adding a new bash alias, this can be done by adding the line ```alias roku='python ~/apps/RokuRTerm.py'``` to ```.bashrc``` (located in your home directory), this will allow the script to be started using the command ```roku```.
 
 Once the app is running the following key functions are assigned:
 
