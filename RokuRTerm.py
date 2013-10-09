@@ -81,22 +81,43 @@ def print_help():
         print "s - Down"
         print "d - Right"
         print "z - Select"
-        print "q - Back"
+        print "b - Back"
+        print "q - Quit"
         print "p - Play/Pause"
         print "< or , - Reverse"
         print "> or . - Forward"
         print "I - Info (* on Roku Remote)"
         print "R - Instant Replay"
+        print "k - keyboard mode"
 
 run = 1
+keymode = False
 
 def parse_cl(cl_input):
 	global run
+        global keymode
 	function = cl_input.upper()
 	for case in switch(function):
+                if case("\x1b"):
+                        keymode = False
+                        print "Exit keyboard mode"
+                        break
 		if case('/'):
 			run = 0
 			break
+		if case('Q'):
+			run = 0
+			break
+                if keymode:
+                        if ( (cl_input <= 'z' and cl_input >= 'a') or
+                             (cl_input <= '9' and cl_input >= '0') ):
+                                cmd = "Lit_" + cl_input
+                                send_key_cmd(cmd)
+                        if cl_input == ' ':
+                                send_key_cmd("Lit_%20")
+                        if cl_input == "\x08":
+                                send_key_cmd("InstantReplay")
+                        break
 		if case('P'):
 			send_key_cmd("Play")
 			break
@@ -130,7 +151,7 @@ def parse_cl(cl_input):
 		if case('Z'):
 			send_key_cmd("Select")
 			break
-                if case('Q'):
+                if case('B'):
                         send_key_cmd("Back")
                         break
                 if case('R'):
@@ -138,6 +159,10 @@ def parse_cl(cl_input):
                         break
                 if case('I'):
                         send_key_cmd("Info")
+                        break
+                if case('K'):
+                        keymode = True
+                        print "Entering keyboard mode, <ESC> to exit"
                         break
 		if case('?'):
 			print_help()
