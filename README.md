@@ -32,8 +32,8 @@ Once the app is running the following key functions are assigned:
 -	```p``` - Play/Pause
 -	```<``` or ```,``` - Reverse
 -	```>``` or ```.``` - Forward
--	```I``` - Info (* on Roku Remote)
--	```R``` - Instant Replay
+-	```i``` - Info (* on Roku Remote)
+-	```r``` - Instant Replay
 
 Keyboard mode allows you to send alphanumerics directly to the Roku,
 which is especially helpful for the search box.  You can type text right
