@@ -3,6 +3,8 @@ RokuRTerm
 
 A very lightweight terminal based [Roku](http://www.roku.com) remote.
 
+[![Code Health](https://landscape.io/github/DanNixon/RokuRTerm/master/landscape.png)](https://landscape.io/github/DanNixon/RokuRTerm/master)
+
 Uses [this](http://code.activestate.com/recipes/134892/) recipe to add cross platform ```getch()``` function.
 
 Config
