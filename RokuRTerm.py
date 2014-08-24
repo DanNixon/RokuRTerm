@@ -99,8 +99,8 @@ def parse_cl(cl_input):
     function = cl_input.upper()
     if keymode:
         if (cl_input <= 'z' and cl_input >= 'a') or (cl_input <= '9' and cl_input >= '0'):
-               cmd = "Lit_" + cl_input
-               send_key_cmd(cmd)
+            cmd = "Lit_" + cl_input
+            send_key_cmd(cmd)
         if cl_input == ' ':
             send_key_cmd("Lit_%20")
         if cl_input == "\x08":
