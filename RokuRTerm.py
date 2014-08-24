@@ -8,21 +8,22 @@
 
 import httplib, sys, socket
 
-## Set this to your Roku player IP
+# Set this to your Roku player IP
 roku_ip = "192.168.1.120"
 
-class Getch:
+class Getch(object):
     def __init__(self):
         try:
             self.impl = GetchWindows()
         except ImportError:
             self.impl = GetchUnix()
 
-    def __call__(self): return self.impl()
+    def __call__(self):
+        return self.impl()
 
-class GetchUnix:
+class GetchUnix(object):
     def __init__(self):
-        import tty
+        import tty, termios
 
     def __call__(self):
         import tty, termios
@@ -35,7 +36,7 @@ class GetchUnix:
             termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
         return ch
 
-class GetchWindows:
+class GetchWindows(object):
     def __init__(self):
         import msvcrt
 
@@ -97,17 +98,16 @@ def parse_cl(cl_input):
     global keymode
     function = cl_input.upper()
     if keymode:
-        if ( (cl_input <= 'z' and cl_input >= 'a') or
-             (cl_input <= '9' and cl_input >= '0') ):
-                cmd = "Lit_" + cl_input
-                send_key_cmd(cmd)
+        if (cl_input <= 'z' and cl_input >= 'a') or (cl_input <= '9' and cl_input >= '0'):
+               cmd = "Lit_" + cl_input
+               send_key_cmd(cmd)
         if cl_input == ' ':
-                send_key_cmd("Lit_%20")
+            send_key_cmd("Lit_%20")
         if cl_input == "\x08":
-                send_key_cmd("InstantReplay")
+            send_key_cmd("InstantReplay")
         if cl_input == "\x1b":
-                keymode = False
-                print "Exit keyboard mode"
+            keymode = False
+            print "Exit keyboard mode"
     else:
         for case in switch(function):
             if case('/'):
