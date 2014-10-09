@@ -5,24 +5,15 @@ A very lightweight terminal based [Roku](http://www.roku.com) remote.
 
 [![Code Health](https://landscape.io/github/DanNixon/RokuRTerm/master/landscape.png)](https://landscape.io/github/DanNixon/RokuRTerm/master)
 
-Uses [this](http://code.activestate.com/recipes/134892/) recipe to add cross platform ```getch()``` function.
-
-Config
------
-
-Simply set the ```roku_ip``` variable to the IP address of your Roku player, you can get this by going to "Settings" > "About" on your Roku player.
-
-You may wish to change some of the key mappings if you find my layout isn't working well for you, you can do this by changing the values in the ```case('X')``` statements.
-
 Usage
 -----
 
-Start the application using ```python RokuRTerm.py```, you may wish to enclose this is a shell script in your home directory or by adding a new bash alias, this can be done by adding the line ```alias roku='python ~/apps/RokuRTerm.py'``` to ```.bashrc``` (located in your home directory), this will allow the script to be started using the command ```roku```.
+```roku [IP]```, where IP is the IP address of the ROku player you wish to control.
 
 Once the app is running the following key functions are assigned:
 
 -	```?``` - Help
--	```/``` - Exit Remote App
+-	```/``` - Exit
 -	```w``` - Up
 -	```a``` - Left
 -	```s``` - Down
