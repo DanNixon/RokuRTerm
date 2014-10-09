@@ -1,15 +1,22 @@
 import sys
-from control import RokuConnector
 from util import switch
 
+
 class CLParser(object):
+    """
+    Processes characters read from command line.
+    """
 
     def __init__(self, roku):
         self._roku = roku
         self._keymode = False
 
+
     def print_help(self):
-        print 'RokuRTerm'
+        """
+        Prints key mappings.
+        """
+
         print 'Keys:'
         print '? - Help'
         print '/ - Exit'
@@ -27,7 +34,14 @@ class CLParser(object):
         print 'r - Instant Replay'
         print 'k - keyboard mode'
 
+
     def parse_cl(self, cl_input):
+        """
+        Parses a given character.
+
+        @param cl_input Input from command line
+        """
+
         function = cl_input.upper()
         if self._keymode:
             if (cl_input <= 'z' and cl_input >= 'a') or (cl_input <= '9' and cl_input >= '0'):

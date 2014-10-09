@@ -8,6 +8,7 @@ class Getch(object):
     def __call__(self):
         return self.impl()
 
+
 class GetchUnix(object):
     def __init__(self):
         import tty, termios, sys
@@ -23,6 +24,7 @@ class GetchUnix(object):
             termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
         return ch
 
+
 class GetchWindows(object):
     def __init__(self):
         import msvcrt
@@ -30,6 +32,7 @@ class GetchWindows(object):
     def __call__(self):
         import msvcrt
         return msvcrt.getch()
+
 
 class switch(object):
     def __init__(self, value):
