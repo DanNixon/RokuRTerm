@@ -1,5 +1,6 @@
 import sys
-from util import switch
+
+from .util import switch
 
 
 class CLParser(object):
@@ -16,23 +17,24 @@ class CLParser(object):
         """
         Prints key mappings.
         """
-
-        print 'Keys:'
-        print '? - Help'
-        print '/ - Exit'
-        print 'w - Up'
-        print 'a - Left'
-        print 's - Down'
-        print 'd - Right'
-        print 'z - Select'
-        print 'b - Back'
-        print 'q - Quit'
-        print 'p - Play/Pause'
-        print '< or , - Reverse'
-        print '> or . - Forward'
-        print 'i - Info (* on Roku Remote)'
-        print 'r - Instant Replay'
-        print 'k - keyboard mode'
+        print(
+            'Keys:\n'
+            '? - Help\n'
+            '/ - Exit\n'
+            'w - Up\n'
+            'a - Left\n'
+            's - Down\n'
+            'd - Right\n'
+            'z - Select\n'
+            'b - Back\n'
+            'q - Quit\n'
+            'p - Play/Pause\n'
+            '< or , - Reverse\n'
+            '> or . - Forward\n'
+            'i - Info (* on Roku Remote)\n'
+            'r - Instant Replay\n'
+            'k - Keyboard mode'
+        )
 
 
     def parse_cl(self, cl_input):
@@ -41,7 +43,6 @@ class CLParser(object):
 
         @param cl_input Input from command line
         """
-
         function = cl_input.upper()
         if self._keymode:
             if (cl_input <= 'z' and cl_input >= 'a') or (cl_input <= '9' and cl_input >= '0'):
@@ -53,7 +54,7 @@ class CLParser(object):
                 self._roku.send_key_cmd('InstantReplay')
             if cl_input == '\x1b':
                 self._keymode = False
-                print 'Exit keyboard mode'
+                print('Exit keyboard mode')
         else:
             for case in switch(function):
                 if case('/'):
@@ -106,7 +107,7 @@ class CLParser(object):
                     break
                 if case('K'):
                     self._keymode = True
-                    print 'Entering keyboard mode, <ESC> to exit'
+                    print('Entering keyboard mode, <ESC> to exit')
                     break
                 if case('?'):
                     self.print_help()
